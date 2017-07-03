@@ -12,19 +12,36 @@ import (
 var (
 	port     string
 	basePath string
+	blue = color.New(color.BgBlue).SprintFunc()
+	green = color.New(color.FgGreen).SprintFunc()
+)
+
+const (
+	name        = "Ban Chá! ʕ•ᴥ•ʔ"
+	version     = "1.0.0"
+	description = "Ban chá! A Simple HTTP Server with go. Debug/Log Porpose!"
+	banner      = `
+██████╗  █████╗ ███╗   ██╗ ██████╗██╗  ██╗ █████╗
+██╔══██╗██╔══██╗████╗  ██║██╔════╝██║  ██║██╔══██╗
+██████╔╝███████║██╔██╗ ██║██║     ███████║███████║
+██╔══██╗██╔══██║██║╚██╗██║██║     ██╔══██║██╔══██║
+██████╔╝██║  ██║██║ ╚████║╚██████╗██║  ██║██║  ██║
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝
+Simple http server to log!
+Powered by Luis Vieira ʕ•ᴥ•ʔ
+                                                  `
 )
 
 func main() {
 
 	app := cli.NewApp()
-	app.Name = "bancha"
-
-	app.Description = "Ban chá! A Simple HTTP Server with go. Debug/Log Porpose!"
-
+	app.Name = name
+	app.Version = version
+	app.Description = description
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:        "port, p",
-			Value:       "1323",
+			Value:       "0805",
 			Usage:       "port for the server",
 			Destination: &port,
 		},
@@ -35,10 +52,15 @@ func main() {
 			Destination: &basePath,
 		},
 	}
+	fmt.Printf("%s\n", green(banner))
+
 
 	app.Action = func(c *cli.Context) error {
 		e := echo.New()
+		e.HideBanner = true
 		e.Debug = true
+		fmt.Printf("base path: %s\n", green(basePath))
+		fmt.Printf("serving port: %s\n", green(port))
 		e.Any(basePath, printRequest)
 		e.Start(":" + port)
 		return nil
@@ -49,8 +71,6 @@ func main() {
 
 func printRequest(c echo.Context) error {
 	s, _ := ioutil.ReadAll(c.Request().Body)
-
-	blue := color.New(color.BgBlue).SprintFunc()
 
 	fmt.Printf("%s\n", blue("=============HEADERS============="))
 
