@@ -8,7 +8,10 @@ i have to write a simple dummy server. So I decide to create that.
 
 Maybe can be useful for others. 
 
+ Before all: 
+ [Install go!](https://golang.org/dl/) 
  
+
  
  Open your terminal and type one of these commands:
 
