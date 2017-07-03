@@ -52,7 +52,7 @@ func printRequest(c echo.Context) error {
 
 	blue := color.New(color.BgBlue).SprintFunc()
 
-	fmt.Printf("%s\n", blue("=============HEADER============="))
+	fmt.Printf("%s\n", blue("=============HEADERS============="))
 
 	for k, v := range c.Request().Header {
 		fmt.Printf("%s %s\n", k, v)
