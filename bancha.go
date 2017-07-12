@@ -41,7 +41,7 @@ func main() {
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:        "port, p",
-			Value:       "0805",
+			Value:       "8085",
 			Usage:       "port for the server",
 			Destination: &port,
 		},
