@@ -12,7 +12,6 @@ Maybe can be useful for others.
  [Install go!](https://golang.org/dl/) 
  
 
- 
  Open your terminal and type one of these commands:
 
 
@@ -29,4 +28,4 @@ Maybe can be useful for others.
   
   
   # NOTE 
-  The project's propose is to log and inspect HTTP requestion. Differen than [https://docs.python.org/2/library/simplehttpserver.html](Python Simple HTTP Server) propose
+  The project's propose is to log and inspect HTTP requestion. Differen than (https://docs.python.org/2/library/simplehttpserver.html)[Python Simple HTTP Server] propose
